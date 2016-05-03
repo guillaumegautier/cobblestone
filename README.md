@@ -18,7 +18,7 @@ Where you can specify grid gutters, grid breakpoints, margin unit, main fonts an
 
 #### background-cover-fix
 
-Fixes on-scroll glitches when an image it put on background :
+Fixes on-scroll glitches when an image is put on background :
 
 ```javascript
 $(window).scroll(function() {
@@ -27,12 +27,12 @@ $(window).scroll(function() {
 });
 ```
 
-**Requirements :**
-jquery
+•••**Requirements :**••
+•••jquery•••
 
-**Usage :**
-Replace `[element]` value (`body` by default) ;
-Call before `</body>` closing tag :
+•••**Usage :**••
+•••Replace `[element]` value (`body` by default) ;••
+•••Call before `</body>` closing tag :•••
 
 ```html
 <script src="../media/js/footer/background-cover-fix"></script>
