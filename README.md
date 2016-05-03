@@ -35,9 +35,11 @@ $(window).scroll(function() {
    Call on front-matter `footerscripts` or call before `</body>` closing tag :   
 
 ```html
-<script src="../media/js/footer/background-cover-fix/js"></script>
+<script type="text/javascript" src="../media/js/footer/background-cover-fix.js"></script>
 ```
 ---
+
+
 ### smoothscroll
 
 Adds a nice smooth effect while scrolling.
@@ -50,5 +52,9 @@ Adds a nice smooth effect while scrolling.
 ```html
 <script type="text/javascript" src="../media/js/footer/smoothscrolling.js"></script>
 ```
+---
+
+
+
 
 
