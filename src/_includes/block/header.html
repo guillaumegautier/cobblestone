@@ -1,0 +1,10 @@
+<nav class="main_nav">
+	<div class="container">
+		<a href="javascript:void(0);" class="logo"><img src="http://www.placehold.it/100x50" alt="logo"></a>
+		<ul>
+			{% for m in (1..4) %}
+			<li><a href="javascript:void(0);">{% cycle 'Home','Portfolio','About','Contact' %}</a></li>
+			{% endfor %}
+		</ul>
+	</div>
+</nav>

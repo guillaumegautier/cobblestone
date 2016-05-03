@@ -1,0 +1,15 @@
+/* MENUS */
+nav { * zoom: 1; }
+nav:before, nav:after { content: " "; display: table; }
+nav:after { clear: both; }
+nav.navbar ul { list-style: none; margin: 0; padding: 0; }
+nav.navbar ul > li { display: inline-block; vertical-align: middle; float: left; position: relative; }
+nav.navbar ul > li:hover > ul { opacity: 1; visibility: visible; }
+nav.navbar ul > li:hover > a { background-color: #DDDDDD; }
+nav.navbar ul > li > a { color: #333333; text-decoration: none; padding: 4px 8px; display: inline-block; background-color: white; position: relative; }
+nav.navbar ul > li > a:hover { background-color: #C5C5C5; }
+nav.navbar ul.dropdown { z-index: 1; position: absolute; top: 100%; left: 0; opacity: 0; visibility: hidden; }
+nav.navbar ul.dropdown > li { min-width: 140px; }
+nav.navbar ul.dropdown > li a { display: block; }
+
+/*# sourceMappingURL=menus.css.map */

@@ -1,0 +1,18 @@
+<nav id="main_nav" class="navbar">
+	<div class="container">
+		<a href="javascript:void(0);" class="logo"><img src="http://www.placehold.it/100x50" alt="logo"></a>
+		<ul id="menu">
+			{% for m in (1..4) %}
+			<li><a href="{% cycle 'index3.html','index4.html','#','#' %}">{% cycle 'Home','Portfolio','About','Contact' %}</a></li>
+			{% endfor %}
+			<li>
+				<a href="#">test</a>
+				<ul class="dropdown">
+					<li><a href="#">test</a></li>
+					<li><a href="#">test</a></li>
+					<li><a href="#">test</a></li>
+				</ul>
+			</li>
+		</ul>
+	</div>
+</nav>

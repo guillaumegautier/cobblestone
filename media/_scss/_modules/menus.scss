@@ -1,0 +1,49 @@
+@import '_lib/mixins';
+@import '_lib/variables';
+
+/* MENUS */
+
+nav{
+	@include clearfix;
+	&.navbar{
+		ul{
+			list-style: none;
+			margin: 0;padding: 0;
+			> li{
+				display: inline-block;
+				vertical-align: middle;
+				float: left;
+				position: relative;
+				&:hover{
+					> ul{opacity: 1; visibility: visible;}
+					> a{background-color: $lightgray;}
+				}
+				> a{
+					color: $body-color;
+					text-decoration: none; padding: 4px 8px; display: inline-block;
+					background-color: white;
+					position: relative;
+					&:hover{background-color: $mediumgray;}
+				}
+				> ul{
+
+					> li{
+
+					}
+				}
+			}
+		}
+
+
+		ul.dropdown{
+			z-index: 1;
+			position: absolute; top: 100%;left: 0;
+			opacity: 0; visibility: hidden;
+			> li{
+				min-width: 140px;
+				a{display: block;}
+			}
+		}
+	}
+
+}
