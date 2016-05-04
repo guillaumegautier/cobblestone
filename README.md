@@ -1,6 +1,6 @@
 # Cobblestone 
 ### Cobblestone is a Jekyll starter framework, based on Bootstrap
-## Features :
+## Features
 #### Normalize
 Normalize CSS by [Nicolas Gallagher](http://github.com/necolas/)
 #### Typography
@@ -40,7 +40,7 @@ $(window).scroll(function() {
 ---
 
 
-### smoothscroll
+#### smoothscroll
 
 Adds a nice smooth effect while scrolling.
 
