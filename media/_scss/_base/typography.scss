@@ -22,7 +22,13 @@ h4, .h4{font-size: 1.125rem;}
 h5, .h5{font-size: 0.875rem;}
 h6, .h6{font-size: 0.750rem;}
 
-p{margin: $su/2 0;}
+p{
+	margin: $su/2 0;
+	&.lead{
+		font-size: 1.5em;
+		font-weight: 200;
+	}
+}
 
 .text-center{
 	text-align: center;

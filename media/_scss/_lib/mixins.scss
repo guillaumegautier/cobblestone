@@ -1,5 +1,7 @@
 $version: combatproof mixins 1.2;
 
+//updated border-radius
+
 @mixin appearance($appearance: none){
 	-webkit-appearance: $appearance;
 	-moz-appearance: $appearance;
@@ -21,8 +23,8 @@ $version: combatproof mixins 1.2;
 	* zoom: 1;
 }
 
-@mixin border-radius($radius: 3px){
-	border-radius: $radius;
+@mixin border-radius($radius1: 3px, $radius2: 3px, $radius3: 3px, $radius4: 3px){
+	border-radius: $radius1 $radius2 $radius3 $radius4;
 }
 
 @mixin border-top-radius($radius: 3px) {

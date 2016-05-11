@@ -5,10 +5,119 @@ styles: [general]
 scripts: []
 ---
 
+<header class="hero">
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-md-12">
+				<img src="../media/demo/img/cobblestone.jpg" alt="Cobblestone logo" width="236px" height="242px">
+				<h1>Cobblestone</h1>
+				<h2>A lightweight Jekyll based starter framework</h2>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-12">
+				<div class="github">
+					<p>Hosted and maintained on Github</p>
+					<a href="https://github.com/guillaumegautier/cobblestone" target="_blank" class="btn btn-lg btn-default"><span>See the project</span> <img src="../media/demo/img/icons/github.png" alt="on Github" width="30px" height="29px"></a>
+				</div>
+			</div>
+		</div>
+	</div>
+</header>
+
+<section class="features">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-4 features-element">
+				<img src="http://www.placehold.it/300x200?text=Sass logo" alt="">
+				<h3>Sass inside</h3>
+				<p>Buildt and ships with <a href="http://sass-lang.com">Sass</a>, pre-set and customizable variables for main elements.</p>
+			</div>
+			<div class="col-md-4 features-element">
+				<img src="http://www.placehold.it/300x200?text=Responsive logo" alt="">
+				<h3>Responsive</h3>
+				<p>Ready to use mobile first CSS with media queries. All devices and IE8+ compatible.</p>
+			</div>
+			<div class="col-md-4 features-element">
+				<img src="http://www.placehold.it/300x200?text=Features logo" alt="">
+				<h3>Lightweight</h3>
+				<p>Cobblestone ships with minimum modules. You have the basics, you build the rest.</p>
+			</div>
+		</div>
+	</div>
+</section>
+
 <div class="container">
 	<div class="row">
-		<div class="col-md-4">col-md-4</div>
-		<div class="col-md-4">col-md-4</div>
-		<div class="col-md-4">col-md-4</div>
+		<div class="col-md-12">
+			<h2>Features</h2>
+			<h3>Normalize</h3>
+			<p>Normalize CSS by <a href="http://github.com/necolas">Nicolas Gallhager</a> for improved cross-browsers rendering</p>
+		</div>
 	</div>
 </div>
+
+<section class="typography">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<h2>Typography</h2>
+				<h3>Headings</h3>
+				<p>All HTML headings, <code>&lt;h1&gt;</code> through <code>&lt;h6&gt;</code>, are available. <code>.h1</code> through <code>.h6</code> classes are also available, for when you want to match the font styling of a heading but still want your text to be displayed inline.</p>
+
+				<div class="block has-code">
+					{% for h in (1..6)  %}
+					<div class="typography-heading">
+						<div class="preview">
+							<h{{ h }}>h{{ h }}. Cobblestone heading</h{{ h }}>
+							<div class="details">Semibold {% cycle '36','30','24','18','14','12' %}px / {% cycle '2.250','1.875','1.500','1.125','0.875','0.750' %}rem</div>
+						</div>
+					</div>	
+					{% endfor %}
+				</div>
+				{% include block/demo/code/typo1.html %}
+
+			</div>
+		</div>
+	</div>
+</section>
+
+<section class="variables">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+
+				<h2>Variables</h2>
+
+				<p class="lead">Les variables peuvent être changées pour personnaliser le framework rapidement. Utilisées telles quelles, elles contituent une bonne base pour commencer à coder rapidement.</p>
+
+				<h3>Layout</h3>
+
+				<h4>Gouttière</h4>
+				<p>Valeur : <code>$gutter: 20px;</code></p>
+				<p>Définit la largeur de la gouttière entre chaque élément de la grille.</p>
+
+				<h4>Breakpoints</h4>
+				<p><code>$bp<i>XX</i></code></p>
+				<p>Définissent les quatre breakpoints de la grille.</p>
+				<p>Valeurs par défaut&nbsp;:</p>
+				{% include block/demo/code/variables-breakpoints.html %}
+
+				<h4>Unité de marge</h4>
+				<p><code>$su: 1.5em;</code></p>
+
+				<h3>Polices</h3>
+				<p><code>$body-font-size;</code> est envoyée à <code>normalize.scss</code></p>
+				{% include block/demo/code/variables-fonts.html %}
+
+				<h3>Couleurs</h4>
+				<h4>Base</h4>
+				<h4>Social</h4>
+				<h4>Custom</h4>
+
+
+
+			</div>
+		</div>
+	</div>
+</section>
