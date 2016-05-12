@@ -457,7 +457,7 @@ p.lead { font-size: 1.5em; font-weight: 200; }
   .col-xl-offset-12 { margin-left: 100%; } }
 /*# sourceMappingURL=bootstrap-grid.css.map */
 /* UI */
-.block { padding: 1.5em; margin: 1.5em 0; border: 1px solid #C5C5C5; border-radius: 3px 3px 3px 3px; }
+.block { padding: 1.5em; margin: 1.5em 0; border: 1px solid #C5C5C5; border-radius: 3px; }
 
 .img-responsive { display: block; max-width: 100%; height: auto; }
 
@@ -508,8 +508,8 @@ ul { margin: 0.75em 0; }
 /* BUTTONS */
 a.btn { text-decoration: none; }
 
-.btn { display: inline-block; vertical-align: middle; padding: 4px 8px; cursor: pointer; border: 1px solid; border-radius: 3px 3px 3px 3px; -webkit-transition: background-color 0.2s ease-out; -moz-transition: background-color 0.2s ease-out; -ms-transition: background-color 0.2s ease-out; -o-transition: background-color 0.2s ease-out; transition: background-color 0.2s ease-out; /* colors */ /* sizes */ }
-.btn.rounded { border-radius: 17px 3px 3px 3px; }
+.btn { display: inline-block; vertical-align: middle; padding: 4px 8px; cursor: pointer; border: 1px solid; border-radius: 3px; -webkit-transition: background-color 0.2s ease-out; -moz-transition: background-color 0.2s ease-out; -ms-transition: background-color 0.2s ease-out; -o-transition: background-color 0.2s ease-out; transition: background-color 0.2s ease-out; /* colors */ /* sizes */ }
+.btn.rounded { border-radius: 17px; }
 .btn i[class^="icon-"] { font-size: 1.125em; display: inline-block; vertical-align: middle; position: relative; line-height: 1em; top: 0px; }
 .btn a { text-decoration: none; }
 .btn.btn-default { background-color: white; color: #333333; border-color: #DDDDDD; }
@@ -538,11 +538,11 @@ a.btn { text-decoration: none; }
 .btn.btn-danger.outlined:hover { background-color: #FC4C4C; color: white; }
 .btn.btn.outlined { background-color: transparent; }
 .btn.btn-lg { padding: 6px 10px; font-size: 1.375em; /* 22px */ }
-.btn.btn-lg.rounded { border-radius: 24px 3px 3px 3px; }
+.btn.btn-lg.rounded { border-radius: 24px; }
 .btn.btn-sm { padding: 4px 6px; font-size: 0.750em; /* 12px */ }
-.btn.btn-sm.rounded { border-radius: 14px 3px 3px 3px; }
+.btn.btn-sm.rounded { border-radius: 14px; }
 .btn.btn-xs { padding: 2px 4px; font-size: 10px; /* 10px */ }
-.btn.btn-xs.rounded { border-radius: 12px 3px 3px 3px; }
+.btn.btn-xs.rounded { border-radius: 12px; }
 
 @font-face { font-family: "cobblestone"; src: url("../../media/fonts/cobblestone.eot"); src: url("../../media/fonts/cobblestone.eot?#iefix") format("embedded-opentype"), url("../../media/fonts/cobblestone.woff") format("woff"), url("../../media/fonts/cobblestone.ttf") format("truetype"), url("../../media/fonts/cobblestone.svg#cobblestone") format("svg"); font-weight: normal; font-style: normal; }
 [class^="icon-"]:before, [class*=" icon-"]:before { font-family: "cobblestone" !important; font-style: normal !important; font-weight: normal !important; font-variant: normal !important; text-transform: none !important; speak: none; line-height: 1em; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
@@ -630,12 +630,12 @@ section.features { background-color: white; }
 /* ui */
 .btn span { vertical-align: middle; }
 
-code { display: inline-block; vertical-align: middle; font-family: "Inconsolata",Consolas,"Courier New",monospace; border: 1px solid #C5C5C5; padding: 2px 4px; border-radius: 2px 3px 3px 3px; -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2); -moz-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2); box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2); }
+code { display: inline-block; vertical-align: middle; font-family: "Inconsolata",Consolas,"Courier New",monospace; border: 1px solid #C5C5C5; padding: 2px 4px; border-radius: 2px; -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2); -moz-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2); box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2); }
 
 .block.has-code { margin-top: 0; margin-bottom: 0; border-radius: 2px 2px 0 0; }
 .block.has-code + .block.code { margin-top: 0; padding: 0.75em; position: relative; top: -1px; background-color: #DDDDDD; border-radius: 0 0 2px 2px; }
 .block.has-code + .block.code pre { margin: 0; }
-.block.has-code + .block.code code { border: none; -webkit-box-shadow: 0 0 0 black; -moz-box-shadow: 0 0 0 black; box-shadow: 0 0 0 black; border-radius: 0 0 0 0; }
+.block.has-code + .block.code code { border: none; -webkit-box-shadow: none; -moz-box-shadow: none; box-shadow: none; }
 
 /* modules */
 .features-element { text-align: center; }
