@@ -1,14 +1,14 @@
-@import '_lib/variables';
-@import '_lib/mixins';
-
-@import '_base/normalize';
+@import '_base/variables';
+@import '_base/mixins';
+@import '_base/reset';
 @import '_base/typography';
+@import '_base/helpers';
 
-@import '_layout/grid2';
+@import '_layout/grid';
 
 @import '_modules/ui';
 @import '_modules/buttons';
 @import '_modules/icons';
 @import '_modules/menus';
 
-@import '../demo/scss/general'
+@import '../demo/scss/general';

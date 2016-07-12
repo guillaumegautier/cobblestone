@@ -1,4 +1,4 @@
-/* NORMALIZE */
+/* RESET */
 html { font-family: sans-serif; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; }
 
 body { margin: 0; }
@@ -92,7 +92,7 @@ figure { margin: 0; }
 
 img { vertical-align: middle; }
 
-/* FONTS */
+/* TYPOGRAPHY */
 body { font-family: "Helvetica Neue", "Arial", sans-serif; font-size: 1rem; line-height: 1.5; }
 
 h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 { font-family: "Helvetica Neue", "Arial", sans-serif; margin: 0.75em 0; padding: 0; font-weight: 500; }
@@ -117,6 +117,16 @@ p.lead { font-size: 1.5em; font-weight: 200; }
 .text-left { text-align: left; }
 
 .text-right { text-align: right; }
+
+.text-justify { text-align: justify; }
+
+.bold { font-weight: bold; }
+
+.italic { font-style: italic; }
+
+.underlined { text-decoration: underline; }
+
+.striked { text-decoration: line-through; }
 
 /* GRID */
 .container { margin-right: auto; margin-left: auto; padding-left: 0.75rem; padding-right: 0.75rem; }
@@ -455,7 +465,6 @@ p.lead { font-size: 1.5em; font-weight: 200; }
   .col-xl-offset-10 { margin-left: 83.33333%; }
   .col-xl-offset-11 { margin-left: 91.66667%; }
   .col-xl-offset-12 { margin-left: 100%; } }
-/*# sourceMappingURL=bootstrap-grid.css.map */
 /* UI */
 .block { padding: 1.5em; margin: 1.5em 0; border: 1px solid #C5C5C5; border-radius: 3px; }
 

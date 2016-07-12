@@ -1,7 +1,4 @@
-@import '_lib/mixins';
-@import '_lib/variables';
-
-/* FONTS */
+/* TYPOGRAPHY */
 
 body{
 	font-family: $defaultfont;
@@ -28,14 +25,4 @@ p{
 		font-size: 1.5em;
 		font-weight: 200;
 	}
-}
-
-.text-center{
-	text-align: center;
-}
-.text-left{
-	text-align: left;
-}
-.text-right{
-	text-align: right;
 }
