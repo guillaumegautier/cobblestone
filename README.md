@@ -1,14 +1,22 @@
 # Cobblestone 
-### Cobblestone is a Jekyll starter framework, based on Bootstrap
+### Cobblestone is a Jekyll/Sass starter framework, based on Bootstrap.
+Made with love by Guillaume Gautier.
+
+## Log
+
+**09062016**
+- Updated 'Combatproof mixins' to v1.6
+- Switched to Gulp instead of separated jekyll and sass commands
+
 ## Features
 #### Normalize
 Normalize CSS by [Nicolas Gallagher](http://github.com/necolas/)
 #### Typography
 Basic typography settings
 #### Grid
-Bootstrap inspired grid with customizable breakpoints
+Bootstrap inspired grid with customizable breakpoints and other options
 #### Mixins
-Improved set of mixins : Combatproof mixins 1.4
+Improved set of mixins : Combatproof mixins
 #### Variables
 Where you can specify grid gutters, grid breakpoints, margin unit, main fonts and colors.
 
@@ -18,7 +26,7 @@ Where you can specify grid gutters, grid breakpoints, margin unit, main fonts an
 
 #### background-cover-fix
 
-Fixes on-scroll glitches when an image is put on background :
+Fixes on-scroll glitches when an image is put on background in combination with a fixed positioning :
 
 ```javascript
 $(window).scroll(function() {
