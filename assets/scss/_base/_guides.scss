@@ -1,0 +1,51 @@
+body:before{
+	content:'';
+	position: fixed;
+	z-index: 999999;
+	background-color: rgba(0,0,0,.7);
+	color:yellow;
+	display: block;
+	font-size: 12px;
+	padding: 4px;
+	top: 0;
+	left: 0;
+
+	@include rbp(xxxs) {content:'xxxs';}
+	@include rbp(xxs) {content:'xxs';}
+	@include rbp(xs) {content:'xs';}
+	@include rbp(sm) {content:'sm';}
+	@include rbp(md) {content:'md';}
+	@include rbp(lg) {content:'lg';}
+	@include rbp(xl) {content:'xl';}
+}
+
+.container{
+	background-color: lighten(orange, 40%);
+	border: 1px solid lighten(orange, 10%);
+}
+
+.row{
+	background-color: lighten(red, 40%);
+	border: 1px solid red;
+}
+
+div[class^=col-md-]{
+	position: relative;
+	border: 1px solid rgba(55, 179, 147, .8);
+	background-color: rgba(180, 248, 236, 1);
+	&:before, &:after{
+		position: absolute;
+		content: '';
+		width: $gutter/2;
+		background-color: rgba(55, 179, 147, .5);
+		display: block;
+		top: 0;
+		bottom: 0;
+	}
+	&:before{
+		left: 0;
+	}
+	&:after{
+		right: 0;
+	}
+}

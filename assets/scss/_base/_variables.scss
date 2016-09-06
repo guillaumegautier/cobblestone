@@ -1,0 +1,64 @@
+//gutter
+
+$gutter: 3rem; //24px
+
+//size unit
+
+$su: 1.5rem;  	//24px
+
+//MAIN VARIABLES
+
+//container sizes
+
+$xs: 100% !global;
+$sm: 750px !global;
+$md: 970px !global;
+$lg: 1170px !global;
+$xl: 1440px !global;
+
+//mixins breakpoints
+
+$bpxs: 748px !global;
+$bpsm: 992px !global;
+$bpmd: 1200px !global;
+$bplg: 1500px !global;
+
+//fonts
+
+$body-font-size: 16px;	//sent to normalize.scss
+$em-base: 16;			//sent to mixins.scss 
+$mainfont: "Helvetica Neue", "Arial", sans-serif;
+$defaultfont: "Helvetica Neue", "Arial", sans-serif;
+$altfont: "Helvetica Neue", "Arial", sans-serif;
+
+
+//COLORS
+
+//base
+
+$red: #FC4C4C;
+$green: #09C374;
+$orange: #FF994C;
+$blue: #0076FF;
+$darkgray: #333333;
+$mediumgray: #C5C5C5;
+$lightgray: #DDDDDD;
+$superlightgray: #EEEEEE;
+$white: #FEFEFE;
+
+//social
+
+$facebook-blue: #5171a4;
+$google-red: #D7422D;
+$twitter-blue: #55ACEE;
+$instagram-blue: #2B5C84;
+$pinterest-red: #D01D15;
+
+//customization
+
+$background-color: #F8F8F8;
+$body-color: #333333;
+$link-color: #0076FF;
+$faded: #AAAAAA;
+
+

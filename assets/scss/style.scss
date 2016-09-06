@@ -1,0 +1,63 @@
+@import '_base/variables';
+@import '_base/mixins';
+@import '_base/reset';
+@import '_base/typography';
+@import '_base/guides';
+
+@import '_layout/grid';
+
+@import '_modules/ui';
+@import '_modules/buttons';
+@import '_modules/icons';
+@import '_modules/menus';
+@import '_modules/forms';
+
+@import '_base/helpers';
+
+
+ul.steps{
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	text-align: center;
+	li{
+		display: inline-block;
+
+		a{
+			padding: 10px 20px;
+			display: inline-block;
+			color:white;
+		}
+
+		/* dessin de la ligne */
+		&:nth-of-type(n+2){
+			&:before{
+				content:"";
+				width: 100px;
+				height: 2px;
+				background-color: gray;
+				display: inline-block;
+
+				position: relative;
+				margin-left: -6px;
+				top: -4px;
+			}
+		}
+
+	}
+
+
+	li{
+		a{
+			background-color: grey;
+		}
+		&.active{
+			&:before{
+				background-color: $green;
+			}
+			a{
+				background-color: $green;
+			}
+		}
+	}
+}

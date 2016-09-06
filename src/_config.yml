@@ -3,9 +3,10 @@ port:        4000
 baseurl:     /
 url:         http://localhost:4000
 
-source:      ./
-destination: ../html
-plugins:     ./_plugins
+source:      ./src
+destination: ./dist
+plugins_dir:     ./_plugins
+keep_files:  [assets]
 
 future:      true
 lsi:         false
@@ -13,8 +14,7 @@ highlighter: false
 markdown:    kramdown
 permalink:   date
 
-imagepath:    ../media/img/
-imgbs:        ../media/img/tmp/
+imagepath:    /assets/img/
 alphabet:     [a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r, s, t, u, v, w, x, y, z]
 
 rdiscount:
@@ -25,7 +25,7 @@ kramdown:
   footnote_nr: 1
   entity_output: as_char
   toc_levels: 1..6
-  use_coderay: false
+  enable_coderay: false
 
   coderay:
     coderay_wrap: div
