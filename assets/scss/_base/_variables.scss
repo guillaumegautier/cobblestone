@@ -10,23 +10,32 @@ $su: 1.5rem;  	//24px
 
 //container sizes
 
-$xs: 100% !global;
-$sm: 750px !global;
-$md: 970px !global;
-$lg: 1170px !global;
-$xl: 1440px !global;
+$csxs: 100% !global;
+$cssm: 750px !global;
+$csmd: 970px !global;
+$cslg: 1170px !global;
+$csxl: 1440px !global;
 
 //mixins breakpoints
 
-$bpxs: 748px !global;
-$bpsm: 992px !global;
+$bpxs: 720px !global;
+$bpsm: 920px !global;
 $bpmd: 1200px !global;
 $bplg: 1500px !global;
+
+//responsive breakpoints
+
+$xxxs: 368px !global;
+$xxs: 500px !global;
+$xs: $bpxs !global;
+$sm: $bpsm !global;
+$md: $bpmd !global;
+$lg: $bplg !global;
 
 //fonts
 
 $body-font-size: 16px;	//sent to normalize.scss
-$em-base: 16;			//sent to mixins.scss 
+$em-base: 16;			//sent to mixins.scss
 $mainfont: "Helvetica Neue", "Arial", sans-serif;
 $defaultfont: "Helvetica Neue", "Arial", sans-serif;
 $altfont: "Helvetica Neue", "Arial", sans-serif;
@@ -36,29 +45,31 @@ $altfont: "Helvetica Neue", "Arial", sans-serif;
 
 //base
 
-$red: #FC4C4C;
-$green: #09C374;
-$orange: #FF994C;
-$blue: #0076FF;
-$darkgray: #333333;
-$mediumgray: #C5C5C5;
-$lightgray: #DDDDDD;
-$superlightgray: #EEEEEE;
-$white: #FEFEFE;
+$red: #fc4c4c;
+$green: #09c374;
+$orange: #ff994c;
+$yellow: #ff0;
+$blue: #0076ff;
+$darkgray: #333;
+$mediumgray: #c5c5c5;
+$lightgray: #ddd;
+$superlightgray: #eee;
+$white: #fff;
+$black: #000;
 
 //social
 
 $facebook-blue: #5171a4;
-$google-red: #D7422D;
-$twitter-blue: #55ACEE;
-$instagram-blue: #2B5C84;
-$pinterest-red: #D01D15;
+$google-red: #d7422d;
+$twitter-blue: #55acee;
+$instagram-blue: #2b5c84;
+$pinterest-red: #d01d15;
 
 //customization
 
-$background-color: #F8F8F8;
-$body-color: #333333;
-$link-color: #0076FF;
-$faded: #AAAAAA;
+$background-color: #f8f8f8;
+$body-color: #333;
+$link-color: #0076ff;
+$faded: #aaa;
 
 

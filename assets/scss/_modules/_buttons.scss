@@ -1,109 +1,184 @@
-/* BUTTONS */
+// BUTTONS
 
-a.btn{text-decoration: none;}
-.btn{
+.btn {
 	display: inline-block;
 	vertical-align: middle;
 	padding: 4px 8px;
-	cursor:pointer;
+	cursor: pointer;
 	border: 1px solid;
+	text-decoration: none;
 	@include border-radius();
 	@include transition(background-color);
-	&.rounded{@include border-radius(17px)}
-	i[class^="icon-"]{
+
+	&.rounded {
+		@include border-radius(17px)
+	}
+
+	i[class^="icon-"] {
 		font-size: 1.125em;
 		display: inline-block;
 		vertical-align: middle;
 		position: relative;
 		line-height: 1em;
-		top: 0px;
+		top: 0;
 	}
-	a{text-decoration: none;}
 
-	/* colors */
+	a {
+		text-decoration: none;
+	}
 
-	&.btn-default{
-		background-color: white; color:$darkgray;
+	// colors
+
+	&.btn-default {
+		background-color: $white;
+		color: $darkgray;
 		border-color: $lightgray;
-		&:hover{background-color: $lightgray;}
-		&.outlined{
-			border-color: $lightgray; color: $body-color;
-			&:hover{background-color: $lightgray; color:$body-color;}
+
+		&:hover {
+			background-color: $lightgray;
+		}
+
+		&.outlined {
+			border-color: $lightgray;
+			color: $body-color;
+
+			&:hover {
+				background-color: $lightgray;
+				color: $body-color;
+			}
 		}
 	}
-	&.btn-primary{
-		background-color: $darkgray; color:white;
+
+	&.btn-primary {
+		background-color: $darkgray;
+		color: $white;
 		border-color: $darkgray;
-		&:hover{background-color: darken($darkgray, 10%);}
-		&.outlined{
-			border-color: $darkgray; color: $darkgray;
-			&:hover{background-color: $darkgray; color:white;}
+
+		&:hover {
+			background-color: darken($darkgray, 10%);
+		}
+
+		&.outlined {
+			border-color: $darkgray;
+			color: $darkgray;
+
+			&:hover {
+				background-color: $darkgray;
+				color: $white;
+			}
 		}
 	}
-	&.btn-info{
-		background-color:$blue; color:white;
+
+	&.btn-info {
+		background-color: $blue;
+		color: $white;
 		border-color: $blue;
-		&:hover{background-color: darken($blue,10%);}
-		&.outlined{
-			border-color: $blue; color: $blue;
-			&:hover{background-color: $blue; color:white;}
+
+		&:hover {
+			background-color: darken($blue, 10%);
+		}
+
+		&.outlined {
+			border-color: $blue;
+			color: $blue;
+
+			&:hover {
+				background-color: $blue;
+				color: $white;
+			}
 		}
 	}
-	&.btn-success{
-		background-color:$green; color:white;
+
+	&.btn-success {
+		background-color: $green;
+		color: $white;
 		border-color: $green;
-		&:hover{background-color: darken($green,10%);}
-		&.outlined{
-			border-color: $green; color: $green;
-			&:hover{background-color: $green; color:white;}
+
+		&:hover {
+			background-color: darken($green, 10%);
+		}
+
+		&.outlined {
+			border-color: $green;
+			color: $green;
+
+			&:hover {
+				background-color: $green;
+				color: $white;
+			}
 		}
 	}
-	&.btn-alert{
-		background-color:$orange; color:white;
+
+	&.btn-alert {
+		background-color: $orange;
+		color: $white;
 		border-color: $orange;
-		&:hover{background-color: darken($orange,10%);}
-		&.outlined{
-			border-color: $orange; color: $orange;
-			&:hover{background-color: $orange; color:white;}
+
+		&:hover {
+			background-color: darken($orange, 10%);
+		}
+
+		&.outlined {
+			border-color: $orange;
+			color: $orange;
+
+			&:hover {
+				background-color: $orange;
+				color: $white;
+			}
 		}
 	}
-	&.btn-danger{
-		background-color:$red; color:white;
+
+	&.btn-danger {
+		background-color: $red;
+		color: $white;
 		border-color: $red;
-		&:hover{background-color: darken($red,10%);}
-		&.outlined{
-			border-color: $red; color: $red;
-			&:hover{background-color: $red; color:white;}
+
+		&:hover {
+			background-color: darken($red, 10%);
+		}
+
+		&.outlined {
+			border-color: $red;
+			color: $red;
+
+			&:hover {
+				background-color: $red;
+				color: $white;
+			}
 		}
 	}
-	&.btn.outlined{
+
+	&.btn.outlined {
 		background-color: transparent;
 	}
 
-	/* sizes */
+	// sizes
 
-	&.btn-lg{
+	&.btn-lg {
 		padding: 6px 10px;
-		font-size: 1.375em; /* 22px */
-		&.rounded{@include border-radius(24px)}
-		i[class^="icon-"]{
+		font-size: rem(22);
 
+		&.rounded {
+			@include border-radius(24px)
 		}
 	}
-	&.btn-sm{
+
+	&.btn-sm {
 		padding: 4px 6px;
-		font-size: 0.750em; /* 12px */
-		&.rounded{@include border-radius(14px)}
-		i[class^="icon-"]{
+		font-size: rem(12);
 
+		&.rounded {
+			@include border-radius(14px)
 		}
 	}
-	&.btn-xs{
-		padding: 2px 4px;
-		font-size: 10px; /* 10px */
-		&.rounded{@include border-radius(12px)}
-		i[class^="icon-"]{
 
+	&.btn-xs {
+		padding: 2px 4px;
+		font-size: rem(10);
+
+		&.rounded {
+			@include border-radius(12px)
 		}
 	}
 }

@@ -10,6 +10,7 @@ var clean = require('gulp-clean');
 var cp = require('child_process');
 var livereload = require('gulp-livereload');
 var gutil = require('gulp-util');
+var newer = require('gulp-newer');
 
 // Clean
 gulp.task('clean', function(){
@@ -21,9 +22,10 @@ gulp.task('clean', function(){
 gulp.task('sass', function(){
 	gulp.src('assets/scss/**/[^_]*.?(s)css')
 	.pipe(plumber())
+	.pipe(newer('dist/assets/css'))
 	.pipe(sourcemaps.init())
 	.pipe(sass({
-		outputStyle: 'compressed'
+		outputStyle: 'compact'
 		}).on('error', sass.logError))
 	.pipe(autoprefixer())
 	.pipe(sourcemaps.write('./maps'))
@@ -51,6 +53,14 @@ gulp.task('images', function() {
 	.pipe(gulp.dest('dist/assets/img'))
 	});
 
+// Image copy
+gulp.task('images-copy', function() {
+	gulp.src('assets/img/**/*')
+	.pipe(newer('dist/assets/img'))
+	.pipe(gulp.dest('dist/assets/img'))
+	.pipe(livereload());
+	});
+
 
 // Build Jekyll 
 gulp.task('build-jekyll', (code) => {
@@ -70,14 +80,16 @@ gulp.task('fonts', function(){
 // Watch for changes
 gulp.task('watch', function() {
 	livereload.listen();
-	gulp.watch(['./src/*.html', './src/_layouts/*.html', './src/_includes/*.html', './src/_posts/*', './src/_config.yml'], ['build-jekyll']);
+	
+	gulp.watch(['./src/**/*'], ['build-jekyll']);
+
 	gulp.watch(['./assets/js/**/*.js'], ['javascript']).on('change', function(event) {
 		console.log('File ' + event.path + ' was ' + event.type + ', running tasks...');
 		});;
 	gulp.watch('./assets/scss/**/*.scss', ['sass']).on('change', function(event) {
 		console.log('File ' + event.path + ' was ' + event.type + ', running tasks...');
 		});
-	gulp.watch(['./assets/img/**/*'], ['images']).on('change', function(event) {
+	gulp.watch(['./assets/img/**/*'], ['images-copy']).on('change', function(event) {
 		console.log('File ' + event.path + ' was ' + event.type + ', running tasks...');
 		});;
 	gulp.watch(['./assets/fonts/**/*'], ['fonts']).on('change', function(event) {
@@ -88,7 +100,6 @@ gulp.task('watch', function() {
 		});
 	});
 
-
 // Gulp default
-gulp.task('default', ['sass', 'javascript', 'images', 'fonts', 'watch', 'build-jekyll']);
+gulp.task('default', ['sass', 'javascript', 'images-copy', 'fonts', 'build-jekyll', 'watch']);
 

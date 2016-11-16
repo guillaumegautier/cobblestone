@@ -1,115 +1,75 @@
-/* UI */
+// UI
 
-.block{
-  padding: $su;
-  margin: $su 0;
-  border: 1px solid $mediumgray;
-  @include border-radius;
-}
-
-.img-responsive {
-  display: block;
-  max-width: 100%;
-  height: auto;
-  margin: 0 auto;
-}
-
-.img-rounded {
-  border-radius: 6px;
-}
-
-.img-thumbnail {
-  padding: 4px;
-  line-height: 1.42857143;
-  background-color: white;
-  border: 1px solid $lightgray;
-  border-radius: 4px;
-  -webkit-transition: all 0.2s ease-in-out;
-  -o-transition: all 0.2s ease-in-out;
-  transition: all 0.2s ease-in-out;
-  display: inline-block;
-  max-width: 100%;
-  height: auto;
-}
-
-.img-circle {
-  border-radius: 50%;
+.block {
+	padding: $su;
+	margin: $su 0;
+	border: 1px solid $mediumgray;
+	@include border-radius;
 }
 
 hr {
-  margin-top: $su;
-  margin-bottom: $su;
-  border: 0;
-  border-top: 1px solid $superlightgray;
+	margin-top: $su;
+	margin-bottom: $su;
+	border: 0;
+	border-top: 1px solid $superlightgray;
 }
 
-ul{margin: $su/2 0;}
+ul {margin: $su / 2 0;}
+
+// forms
 
 .sr-only {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  margin: -1px;
-  padding: 0;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  border: 0;
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	margin: -1px;
+	padding: 0;
+	overflow: hidden;
+	clip: rect(0, 0, 0, 0);
+	border: 0;
 }
 
 .sr-only-focusable {
-  &:active, &:focus {
-    position: static;
-    width: auto;
-    height: auto;
-    margin: 0;
-    overflow: visible;
-    clip: auto;
-  }
+	&:active,
+	&:focus {
+		position: static;
+		width: auto;
+		height: auto;
+		margin: 0;
+		overflow: visible;
+		clip: auto;
+	}
 }
 
-[role="button"] {
-  cursor: pointer;
+[role='button'] {
+	cursor: pointer;
 }
 
-.clearfix, .container, .container-fluid, .row {
-  @extend %clearfix;
+// images
+
+.img-responsive {
+	display: block;
+	max-width: 100%;
+	height: auto;
+	margin: 0 auto;
 }
 
-.center-block {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
+.img-rounded {
+	border-radius: 6px;
 }
 
-.pull-right {
-  float: right !important;
+.img-thumbnail {
+	padding: 4px;
+	line-height: 1.42857143;
+	background-color: $white;
+	border: 1px solid $lightgray;
+	border-radius: 4px;
+	transition: all .2s ease-in-out;
+	display: inline-block;
+	max-width: 100%;
+	height: auto;
 }
 
-.pull-left {
-  float: left !important;
+.img-circle {
+	border-radius: 50%;
 }
-
-.hide, .hidden {
-  display: none !important;
-}
-
-.show {
-  display: block !important;
-}
-
-.invisible {
-  visibility: hidden;
-}
-
-.text-hide {
-  color: transparent;
-  text-shadow: none;
-  background-color: transparent;
-  border: 0;
-}
-
-.affix {
-  position: fixed;
-}
-
-.faded{color:$faded;}

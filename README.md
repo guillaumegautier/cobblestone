@@ -4,6 +4,14 @@ Made with love by Guillaume Gautier.
 
 ## Log
 
+**16112016**
+- Updated 'Combatproof mixins' to v1.6.2
+- Modified grid system and breakpoints for more balance
+- Separated `_guides.scss` into `_grid-guides.scss` and `_reponsive-guides` guides
+- Adapted gutter width in grid guide (now linked to `gutter`)
+- Modified gulp file : `image` task is now independant and replaced by `image-copy` task
+- Added `.scss-lint.yml` linter configuration file
+
 **09062016**
 - Updated 'Combatproof mixins' to v1.6
 - Switched to Gulp instead of separated jekyll and sass commands

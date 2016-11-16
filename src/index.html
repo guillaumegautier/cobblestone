@@ -4,6 +4,7 @@ title: Cobblestone
 styles: [style] 
 srcscripts: []
 vendorscripts: []
+userscalable: false
 ---
 
 <header>
@@ -12,18 +13,29 @@ vendorscripts: []
 			<img src="http://www.placehold.it/100x32" alt="" class='img-responsive'>
 		</div>		
 
-		<nav class="navbar pull-right">
+		<!-- <nav class="navbar pull-right">
 			<ul>
 				<li><a href="javascript:void(0);">Menu 1</a></li>
 				<li><a href="javascript:void(0);">Menu 2</a></li>
 				<li><a href="javascript:void(0);">Menu 3</a></li>
 				<li><a href="javascript:void(0);">Menu 4</a></li>
 			</ul>
+		</nav> -->
+
+		<!-- Wordpress nav -->
+		<nav id="site-navigation" class="main-navigation pull-right" role="navigation">
+			<div class="menu-menu-en-container">
+				<ul id="primary-menu" class="menu">
+					{% for m in (1..4) %}
+					<li class="menu-item{% if m == 1%} current-menu-item{% endif %}"><a href="javascript:void(0);">Menu {{m}}</a></li>
+					{% endfor %}
+				</ul>
+			</div>
 		</nav>
+
+
 	</div>
 </header>
-
-
 
 <div class="hero text-center">
 	<h1>Lorem ipsum</h1>

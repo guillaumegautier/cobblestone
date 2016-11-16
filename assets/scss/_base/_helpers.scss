@@ -1,30 +1,101 @@
-.text-center{
+.text-center {
 	text-align: center;
 }
-.text-left{
+
+.text-left {
 	text-align: left;
 }
-.text-right{
+
+.text-right {
 	text-align: right;
 }
-.text-justify{
+
+.text-justify {
 	text-align: justify;
 }
-.bold{
+
+.bold {
 	font-weight: bold;
 }
-.italic{
+
+.italic {
 	font-style: italic;
 }
-.underline{
+
+.underline {
 	text-decoration: underline;
 }
-.line-through{
+
+.line-through {
 	text-decoration: line-through;
 }
-.uppercase{
+
+.uppercase {
 	text-transform: uppercase;
 }
-.fullwidth{
+
+.fullwidth {
 	width: 100%;
 }
+
+.clearfix {
+	@extend %clearfix;
+}
+
+.center-block {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.pull-right {
+	float: right;
+}
+
+.pull-left {
+	float: left;
+}
+
+.hide,
+.hidden {
+	display: none;
+}
+
+.show {
+	display: block;
+}
+
+.invisible {
+	visibility: hidden;
+}
+
+.text-hide {
+	color: transparent;
+	text-shadow: none;
+	background-color: transparent;
+	border: 0;
+}
+
+.affix {
+	position: fixed;
+}
+
+.faded {
+	color: $faded;
+}
+
+.video-reponsive {
+	position: relative;
+	padding-bottom: 56.25%; // 16:9
+	padding-top: 25px;
+	height: 0;
+
+	iframe {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+	}
+}
+

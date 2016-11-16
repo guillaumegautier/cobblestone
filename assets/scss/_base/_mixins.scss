@@ -1,7 +1,8 @@
-// combatproof mixins 1.6;
+// combatproof mixins 1.6.2;
 
 // added rbp-to
 // removed box-sizing, column-count, colum-gap, column-rule, flex, order, transforms, transform-origin, transitions, user-select
+// modified grid (rbp-to)
 
 %clearfix {
 	&:before,
@@ -99,6 +100,9 @@
 }
 
 @mixin rbp-to($media) {
+	@if $media == xxs {
+		@media screen and (max-width: $xxs) { @content; }
+	}
 	@if $media == xs {
 		@media screen and (max-width: $bpxs) { @content; }
 	}
