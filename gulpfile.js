@@ -1,105 +1,178 @@
-var gulp = require('gulp');
-var plumber = require('gulp-plumber');
-var sass = require('gulp-sass');
-var sourcemaps = require('gulp-sourcemaps');
-var autoprefixer = require('gulp-autoprefixer');
-var imagemin = require('gulp-imagemin');
-var pngquant = require('imagemin-pngquant');
-var uglify = require('gulp-uglify');
-var clean = require('gulp-clean');
-var cp = require('child_process');
-var livereload = require('gulp-livereload');
-var gutil = require('gulp-util');
-var newer = require('gulp-newer');
+const gulp = require('gulp'),
+	  plumber = require('gulp-plumber'),
+	  sass = require('gulp-sass')(require('sass')),
+	  sourcemaps = require('gulp-sourcemaps'),
+	  autoprefixer = require('gulp-autoprefixer'),
+	  image = require('gulp-image'),
+	  uglify = require('gulp-uglify'),
+	  del = require('del'),
+	  livereload = require('gulp-livereload'),
+	  gutil = require('gulp-util'),
+	  cp = require('child_process'),
+	  dependents = require('gulp-dependents'),
+	  { parallel, series, watch, src, dest, lastRun } = require('gulp');
 
-// Clean
-gulp.task('clean', function(){
-	return gulp.src('dist/assets', {read : false})
-	.pipe(clean())
-	})
+var paths = {
+	project: {
+		dest: './dist',
+	},
+	jekyll: {
+		src: ['src/**/*.html','!src/**/_*.html'],
+		dest: './dist/',
+		watch: 'src/**/*.html',
+	},
+	scripts: {
+		src: './assets/js/**/*.js',
+		dest: './dist/media/js/',
+	},
+	style: {
+		src: './assets/scss/**/*.scss',
+		dest: './dist/media/css',
+		sourcemaps: '/_maps/',
+	},
+	fonts: {
+		src: './assets/fonts/**/*.{ttf,woff,woff2,eof,eot,svg}',
+		dest: './dist/media/fonts',
+	},
+	img: {
+		src: './assets/img/**/*',
+		dest: './dist/media/img',
+	},
+	animations: {
+		src: './assets/animations/**/*',
+		dest: './dist/media/animations',
+	},
+	watcher: {
+		src: ['./assets/**/*','./src/**/*'],
+	},
+}
 
-// Compile SASS
-gulp.task('sass', function(){
-	gulp.src('assets/scss/**/[^_]*.?(s)css')
-	.pipe(plumber())
-	.pipe(newer('dist/assets/css'))
-	.pipe(sourcemaps.init())
-	.pipe(sass({
-		outputStyle: 'compact'
-		}).on('error', sass.logError))
-	.pipe(autoprefixer())
-	.pipe(sourcemaps.write('./maps'))
-	.pipe(gulp.dest('dist/assets/css'))
+var configs = {
+	sass: {
+		outputStyle: 'compressed',
+		includePaths: 'node_modules',
+	},
+	image: {
+		pngquant: true,
+		optipng: false,
+		zopflipng: true,
+		jpegRecompress: false,
+		mozjpeg: true,
+		gifsicle: true,
+		svgo: true,
+		concurrent: 10,
+		quiet: false
+	},
+	jekyll: {
+		default: '_config.yml',
+	},
+}
+
+function jekyll(cb) {
+	var jekyll = cp.spawn('jekyll', ['build', '--config', 'src/_config.yml'], {stdio: 'inherit'});
+	jekyll.on('error', (error) => console.log(console.colors.red(error.message)))
+	jekyll.on('exit', function(code) {
+		livereload.reload();
+		cb(code === 0 ? null :'ERROR: Jekyll process exited with code: '+ code);
 	});
+}
 
-
-// Minify Javascript
-gulp.task('javascript', function() {
-	gulp.src('assets/js/**/*.js')
+function javascript() {
+	return gulp
+	.src(paths.scripts.src, {since: lastRun(javascript)})
 	.pipe(plumber())
 	.pipe(uglify())
-	.pipe(gulp.dest('dist/assets/js/'))
-	});
+	.pipe(dest(paths.scripts.dest))
+	.pipe(livereload())
+}
 
+function style() {
+	return gulp
+	.src(paths.style.src, {since: lastRun(style)} )
+	.pipe(plumber())
+	.pipe(dependents())
+	.pipe(sourcemaps.init())
+	.pipe(sass(configs.sass).on('error', sass.logError))
+	.pipe(autoprefixer())
+	.pipe(sourcemaps.write(paths.style.sourcemaps))
+	.pipe(dest(paths.style.dest))
+	.pipe(livereload())
+}
 
-// Image optimization
-gulp.task('images', function() {
-	gulp.src('assets/img/**/*')
-	.pipe(imagemin({
-		progressive: true,
-		svgoPlugins: [{removeViewBox: false}],
-		use: [pngquant()]
-		}))
-	.pipe(gulp.dest('dist/assets/img'))
-	});
+function styleBuild() {
+	return gulp
+	.src(paths.style.src)
+	.pipe(plumber())
+	.pipe(sass(configs.sass).on('error', sass.logError))
+	.pipe(autoprefixer())
+	.pipe(dest(paths.style.dest))
+	.pipe(livereload())
+}
 
-// Image copy
-gulp.task('images-copy', function() {
-	gulp.src('assets/img/**/*')
-	.pipe(newer('dist/assets/img'))
-	.pipe(gulp.dest('dist/assets/img'))
-	.pipe(livereload());
-	});
+function fonts(){
+	return gulp
+	.src(paths.fonts.src, {since: lastRun(fonts)})
+	.pipe(dest(paths.fonts.dest))
+}
 
+function animations(){
+	return gulp
+	.src(paths.animations.src, {since: lastRun(animations)})
+	.pipe(dest(paths.animations.dest))
+}
 
-// Build Jekyll 
-gulp.task('build-jekyll', (code) => {
-	var jekyll = process.platform === "win32" ? "jekyll.bat" : "jekyll";
-	return cp.spawn(jekyll, ['build', '--config', 'src/_config.yml'], {stdio: 'inherit'})
-	.on('error', (error) => gutil.log(gutil.colors.red(error.message)))
-	.on('close', code)
-	});
+function images() {
+	return gulp
+	.src(paths.img.src)
+	.pipe(image(configs.image))
+	.pipe(dest(paths.img.dest));
+}
 
-//Fonts
-gulp.task('fonts', function(){
-	gulp.src('assets/fonts/**/*.{ttf,woff,woff2,eof,eot,svg}')
-	.pipe(gulp.dest('dist/assets/fonts'))
-	})
+function imagesCopy() {
+	return gulp
+	.src(paths.img.src, {since: lastRun(imagesCopy)})
+	.pipe(dest(paths.img.dest))
+}
 
+// clean
 
-// Watch for changes
-gulp.task('watch', function() {
+function cleanDist() {
+	return del(paths.project.dest)
+}
+
+// watch
+
+function watchFiles(){
 	livereload.listen();
-	
-	gulp.watch(['./src/**/*'], ['build-jekyll']);
 
-	gulp.watch(['./assets/js/**/*.js'], ['javascript']).on('change', function(event) {
-		console.log('File ' + event.path + ' was ' + event.type + ', running tasks...');
-		});;
-	gulp.watch('./assets/scss/**/*.scss', ['sass']).on('change', function(event) {
-		console.log('File ' + event.path + ' was ' + event.type + ', running tasks...');
-		});
-	gulp.watch(['./assets/img/**/*'], ['images-copy']).on('change', function(event) {
-		console.log('File ' + event.path + ' was ' + event.type + ', running tasks...');
-		});;
-	gulp.watch(['./assets/fonts/**/*'], ['fonts']).on('change', function(event) {
-		console.log('File ' + event.path + ' was ' + event.type + ', running tasks...');
-		});;
-	gulp.watch(['./dist/**/*.html', './dist/**/*.css', './dist/**/*.js', '.dist/assets/fonts/*.*']).on('change', function (file) {
-		livereload.changed(file.path);
-		});
-	});
+	gulp.watch(paths.jekyll.watch, jekyll)
+	gulp.watch(paths.style.src, style)
+	gulp.watch(paths.scripts.src, javascript)
+	gulp.watch(paths.img.src, imagesCopy)
+	gulp.watch(paths.fonts.src, fonts)
+	gulp.watch(paths.animations.src, animations)
+}
 
-// Gulp default
-gulp.task('default', ['sass', 'javascript', 'images-copy', 'fonts', 'build-jekyll', 'watch']);
+const watcher = watch(paths.watcher.src)
+watcher.on('change', function(path, stats) {
+	console.log(`File ${path} was changed`)
+})
+
+watcher.on('add', function(path, stats) {
+	console.log(`File ${path} was added`)
+})
+
+watcher.on('unlink', function(path, stats) {
+	console.log(`File ${path} was removed`)
+})
+
+const clean = cleanDist
+const build = gulp.parallel(jekyll, styleBuild, javascript, fonts, animations,)
+const compile = gulp.parallel(jekyll, style, javascript, fonts, imagesCopy, animations)
+
+exports.clean = clean
+exports.build = build
+exports.images = images
+exports.watch = watchFiles
+exports.default = series(clean, compile, watchFiles)
 
