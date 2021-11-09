@@ -1,14 +1,15 @@
 # Cobblestone 
-### Cobblestone is a Jekyll/Sass starter workflow, powered by Bootstrap.
+### Jekyll/Sass starter workflow, powered by Bootstrap.
 
 ## Last update
 
 **09112021 - Major update**
 - Updated node modules and package
+- Upgraded to Gulp 4
 - Updated gulpfile
 - Removed Combatproof mixins
 - Removed scripts
-- Removed Cobblestone CSS, replaced by Bootstrap 5.1.3 import in style.css
+- Removed Cobblestone CSS, replaced by Bootstrap 5.1.3 import in style.scss
 - Updated Readme
 
 ## Features
