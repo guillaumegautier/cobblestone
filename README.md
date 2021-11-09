@@ -15,34 +15,42 @@
 #### Gulp
 #### Bootstrap 5.1.3
 
----
-
 ## Usage
 #### Installation :
-```
-npm install
-```
+`npm install`
 
 #### Start coding :
-```
-gulp
-```  
+`gulp` :  Builds Jekyll, scss and js, copy images, triggers liveReload, then starts watcher  
 
-_Builds Jekyll, scss and js, copy images, triggers liveReload, then starts watcher_
-
-```
-gulp build
-```
-
-_Builds Jekyll, scss and js, optimizes images, removes sourcemaps_ 
-
----
+`gulp build` : Builds Jekyll, scss and js, optimizes images, removes sourcemaps
 
 ## Documentation
 
-_to do_
+### Folder structure
 
----
+```
+    dist
+     ├ index.html
+     ⎩ media
+        ├ animations
+        ├ css
+        ├ fonts
+        ⎩ js
+    
+    assets
+     ├ animations
+     ├ fonts
+     ├ js
+     │  ├ src
+     │  ⎩ vendor
+     ⎩ scss
+        ⎩ style.scss
+    
+    src
+     ├ _includes
+     ├ _layouts
+     ⎩ index.html
+```
 
 ## Log
 
