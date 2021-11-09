@@ -18,12 +18,12 @@
 ---
 
 ## Usage
-####Installation :  
+#### Installation :
 ```
 npm install
 ```
 
-####Start coding :
+#### Start coding :
 ```
 gulp
 ```  
