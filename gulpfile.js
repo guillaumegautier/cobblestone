@@ -6,7 +6,7 @@ const gulp = require('gulp'),
 	  image = require('gulp-image'),
 	  uglify = require('gulp-uglify'),
 	  del = require('del'),
-	  livereload = require('gulp-livereload'),
+	  browserSync = require('browser-sync').create(),
 	  gutil = require('gulp-util'),
 	  cp = require('child_process'),
 	  dependents = require('gulp-dependents'),
@@ -68,11 +68,24 @@ var configs = {
 	},
 }
 
+function browsersyncServe(cb){
+	browserSync.init({
+		server: {
+			baseDir: './dist'
+		}    
+	});
+	cb();
+}
+
+function browsersyncReload(cb){
+	browserSync.reload();
+	cb();
+}
+
 function jekyll(cb) {
-	var jekyll = cp.spawn('jekyll', ['build', '--config', 'src/_config.yml'], {stdio: 'inherit'});
-	jekyll.on('error', (error) => console.log(console.colors.red(error.message)))
+	var jekyll = cp.spawn(process.platform === 'win32' ? 'jekyll.bat' : 'jekyll', ['build', '--config', 'src/_config.yml'], {stdio: 'inherit'});
+	jekyll.on('error', (error) => console.error(error.message))
 	jekyll.on('exit', function(code) {
-		livereload.reload();
 		cb(code === 0 ? null :'ERROR: Jekyll process exited with code: '+ code);
 	});
 }
@@ -83,7 +96,7 @@ function javascript() {
 	.pipe(plumber())
 	.pipe(uglify())
 	.pipe(dest(paths.scripts.dest))
-	.pipe(livereload())
+	.pipe(browserSync.stream());
 }
 
 function style() {
@@ -96,7 +109,7 @@ function style() {
 	.pipe(autoprefixer())
 	.pipe(sourcemaps.write(paths.style.sourcemaps))
 	.pipe(dest(paths.style.dest))
-	.pipe(livereload())
+	.pipe(browserSync.stream());
 }
 
 function styleBuild() {
@@ -106,19 +119,21 @@ function styleBuild() {
 	.pipe(sass(configs.sass).on('error', sass.logError))
 	.pipe(autoprefixer())
 	.pipe(dest(paths.style.dest))
-	.pipe(livereload())
+	.pipe(browserSync.stream());
 }
 
 function fonts(){
 	return gulp
 	.src(paths.fonts.src, {since: lastRun(fonts)})
 	.pipe(dest(paths.fonts.dest))
+	.pipe(browserSync.stream());
 }
 
 function animations(){
 	return gulp
 	.src(paths.animations.src, {since: lastRun(animations)})
 	.pipe(dest(paths.animations.dest))
+	.pipe(browserSync.stream());
 }
 
 function images() {
@@ -132,6 +147,7 @@ function imagesCopy() {
 	return gulp
 	.src(paths.img.src, {since: lastRun(imagesCopy)})
 	.pipe(dest(paths.img.dest))
+	.pipe(browserSync.stream());
 }
 
 // clean
@@ -143,9 +159,7 @@ function cleanDist() {
 // watch
 
 function watchFiles(){
-	livereload.listen();
-
-	gulp.watch(paths.jekyll.watch, jekyll)
+	gulp.watch(paths.jekyll.watch, series(jekyll, browsersyncReload))
 	gulp.watch(paths.style.src, style)
 	gulp.watch(paths.scripts.src, javascript)
 	gulp.watch(paths.img.src, imagesCopy)
@@ -167,12 +181,12 @@ watcher.on('unlink', function(path, stats) {
 })
 
 const clean = cleanDist
-const build = gulp.parallel(jekyll, styleBuild, javascript, fonts, images, animations)
+const build = gulp.parallel(jekyll, styleBuild, javascript, fonts, animations,)
 const compile = gulp.parallel(jekyll, style, javascript, fonts, imagesCopy, animations)
 
 exports.clean = clean
-exports.build = series(clean, build)
+exports.build = series(build)
 exports.images = images
 exports.watch = watchFiles
-exports.default = series(clean, compile, watchFiles)
+exports.default = series(clean, compile, browsersyncServe, watchFiles)
 
