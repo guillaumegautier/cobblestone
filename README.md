@@ -46,7 +46,7 @@
 
 ## Log
 
-**04052023
+**04052023**
 - Updated Bootstrap to 5.2.3
 - Switched Liveroad to Browser-sync
 - Removed clean from build and moves image compression to a separate job
