@@ -27,11 +27,13 @@
         ├ animations
         ├ css
         ├ fonts
+        ├ img
         ⎩ js
     
     assets
      ├ animations
      ├ fonts
+     ├ img
      ├ js
      │  ├ src
      │  ⎩ vendor
@@ -45,6 +47,9 @@
 ```
 
 ## Log
+
+**23112023**
+- Added breakpoints indicator
 
 **04052023**
 - Updated Bootstrap to 5.2.3
